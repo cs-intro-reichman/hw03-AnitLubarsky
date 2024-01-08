@@ -41,8 +41,8 @@ public class LoanCalc {
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
     	// Replace the following statement with your code editing
 		double x = loan/n;
-		double increment = 0.01;
-		iterationCounter = 0;
+		double increment = 0.001;
+		iterationCounter = -1;
 		
 		double value;
 		do{
