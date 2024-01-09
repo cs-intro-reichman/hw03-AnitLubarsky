@@ -14,7 +14,6 @@ public class LowerCase {
         // Replace the following statement with your code
         String ans = "";
         for (int i= 0; i < s.length(); i++)  {
-            //char ch = s.charAt(i);
             if ((s.charAt(i) >= 'A') && (s.charAt(i)<='Z')) {
                 ans = ans + (char)(s.charAt(i) + 32);
             } 

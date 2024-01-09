@@ -12,6 +12,14 @@ public class UniqueChars {
      */
     public static String uniqueChars(String s) {
         // Replace the following statement with your code
-        return null;
+        String ans = "";
+        for( int i = 0; i < s.length(); i++){
+            if( s.indexOf(s.charAt(i)) == i){
+                ans = ans + s.charAt(i);
+            } else if( s.charAt(i) == ' '){
+                ans = ans + s.charAt(i);
+            }                
+        }
+        return ans;
     }
 }
