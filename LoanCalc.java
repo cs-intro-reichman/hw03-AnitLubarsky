@@ -39,17 +39,15 @@ public class LoanCalc {
 	*/
 	// Side effect: modifies the class variable iterationCounter.
     public static double bruteForceSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code editing
 		double x = loan/n;
 		double increment = 0.001;
-		iterationCounter = -1;
-		
+		iterationCounter = -1;		
 		double value;
-		do{
+		do {
 		    value = endBalance(loan, rate, n, x);
 			x = x + increment;
 			iterationCounter++;
-		}while( (value>epsilon) && (value>0));
+		} while ((value > epsilon) && (value > 0));
 
     	return x;
     }
@@ -62,17 +60,15 @@ public class LoanCalc {
 	*/
 	// Side effect: modifies the class variable iterationCounter.
     public static double bisectionSolver(double loan, double rate, int n, double epsilon) {  
-    	// Replace the following statement with your code
 		double L = loan/n;
 		iterationCounter = 0;
 		double H = loan + 1;
-		double g=0;
-		// = (L + H)/2;
+		double g = 0;
 			while ((H - L) > epsilon) {
-				g = (L + H)/2;
+				g = (L + H) / 2;
 				if (endBalance(loan, rate, n, g) * endBalance(loan, rate, n, L) > 0){
 					L = g;					
-				}else{
+				} else {
 					H = g;				
 				}
 				iterationCounter++;				
@@ -86,13 +82,9 @@ public class LoanCalc {
 	* interest rate (as a percentage), the number of periods (n), and the periodical payment.
 	*/
 	private static double endBalance(double loan, double rate, int n, double payment) {
-		// Replace the following statement with your code editing
 		double value = loan;
-		//System.out.println("ANIT endBalance: value =" + value + "n = " + n);
-		for( int i=0; i<n; i++ ){
-			//System.out.println("ANIT endBalance: value =" + value);
-			value = (value-payment)*((rate/100)+1);
-			
+		for ( int i = 0; i < n; i++ ){
+			value = (value - payment) * ((rate / 100) + 1);			
 		}
     	return value;
 	}

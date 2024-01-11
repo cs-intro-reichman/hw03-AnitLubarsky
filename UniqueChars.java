@@ -11,12 +11,11 @@ public class UniqueChars {
      * unless they are space characters.
      */
     public static String uniqueChars(String s) {
-        // Replace the following statement with your code
         String ans = "";
-        for( int i = 0; i < s.length(); i++){
-            if( s.indexOf(s.charAt(i)) == i){
+        for ( int i = 0; i < s.length(); i++){
+            if ( s.indexOf (s.charAt(i)) == i){
                 ans = ans + s.charAt(i);
-            } else if( s.charAt(i) == ' '){
+            } else if ( s.charAt(i) == ' '){
                 ans = ans + s.charAt(i);
             }                
         }

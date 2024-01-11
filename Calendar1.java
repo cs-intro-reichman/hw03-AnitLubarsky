@@ -21,8 +21,7 @@ public class Calendar1 {
 		//int countYear = 0; 
 	    // Write the necessary initialization code, and replace the condition
 	    // of the while loop with the necessary condition 
-	 	while (year <= 1999) {		
-					
+	 	while (year <= 1999) {						
 	 		advance();
 			year++;
 	 		//debugDaysCounter++;
@@ -42,25 +41,21 @@ public class Calendar1 {
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
 	 private static void advance() {
 		
-			for( int m = 1; m <= 12; m++){
-				if(dayOfWeek == 1){
+			for ( int m = 1; m <= 12; m++){
+				if (dayOfWeek == 1){
 					System.out.printf("1/%d/%d  Sunday \n", m, year );
 					sundayCounter++;
 				} else {
 					System.out.printf("1/%d/%d \n", m, year );
 				}				
 				dayOfMonth = nDaysInMonth(m, year);
-				dayOfWeek = (dayOfMonth + dayOfWeek - 28)%7;
-				
-			}
-		
-
-
+				dayOfWeek = (dayOfMonth + dayOfWeek - 28) % 7;				
+			}		
 	 } 
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
-	    if( (year % 400 == 0 ) || (( year % 4 == 0 ) && ( year % 100 != 0 )) ){
+	    if( (year % 400 == 0 ) || (( year % 4 == 0 ) && ( year % 100 != 0 ))){
 			return true;			 
 	   } else {
 		   return false;
@@ -73,14 +68,13 @@ public class Calendar1 {
 	// All the other months have 31 days.
 	private static int nDaysInMonth(int month, int year) {
 		switch (month) {
-			case 1: return  31;	 		
+			case 1: return 31;	 		
 			case 2:
-			if (isLeapYear(year)==true) {
+			if (isLeapYear(year) == true) {
 					return 29;
 			} else {
 				return 28;
-			}			 
-							
+			}								
 			case 3: return 31;				
 			case 4: return 30;				
 			case 5: return 31;				

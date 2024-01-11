@@ -1,6 +1,6 @@
 /** 
- * Prints the calendars of all the years in the 20th century.
- */
+	 * Prints the calendars of the chosen year. also prints sunday on the first day of every week.
+	 */
 public class Calendar {	
     // Starting the calendar on 1/1/1900
 	static int dayOfMonth = 1;   
@@ -9,67 +9,51 @@ public class Calendar {
 	static int dayOfWeek = 2;     // 1.1.1900 was a Monday
 	static int nDaysInMonth = 31; // Number of days in January
 
-	/** 
-	 * Prints the calendars of all the years in the 20th century. Also prints the  
-	 * number of Sundays that occured on the first day of the month during this period.
-	 */
 	public static void main(String args[]) {
 		int PickYear = Integer.parseInt(args[0]);
-		// Advances the date and the day-of-the-week from 1/1/1900 till 31/12/1999, inclusive.
-	    // Prints each date dd/mm/yyyy in a separate line. If the day is a Sunday, prints "Sunday".
-	    // The following variable, used for debugging purposes, counts how many days were advanced so far.
-	    //int debugDaysCounter = 0;
-		//int countYear = 0; 
-	    // Write the necessary initialization code, and replace the condition
-	    // of the while loop with the necessary condition 
-	 	while (year < PickYear) {		
-					
+		// Advances the date and the day-of-the-week from 1/1/1900 till the chosen year.
+		//Then prints the calender of the chosen year.
+	    //int debugDaysCounter = 0;	   
+	 	while (year < PickYear) {					
 	 		advanceuntilPickYear();
 			year++;
 		}
-		if( year == PickYear){
+		if ( year == PickYear){
 			advance();
 		}
-	 		//debugDaysCounter++;
-			//countYear++;
-	 		//// If you want to stop the loop after n days, replace the condition of the
-	 		//// if statement with the condition (debugDaysCounter == n)
-	 		//  if (countYear == 3) { 
-	 		//  	break;
-	 		//}
-         
-		
-		
-	 	//// Write the necessary ending code here
+	 		// debugDaysCounter++;	 		
+	 		//   if (debugDaysCounter == n) { 
+	 		//   	break;
+	 		// }	 	
 	}
 	
 	 // Advances the date (day, month, year) and the day-of-the-week.
 	 // If the month changes, sets the number of days in this month.
 	 // Side effects: changes the static variables dayOfMonth, month, year, dayOfWeek, nDaysInMonth.
 	 private static void advanceuntilPickYear() {		
-			for( int m = 1; m <= 12; m++){							
+			for ( int m = 1; m <= 12; m++){							
 				dayOfMonth = nDaysInMonth(m, year);
-				dayOfWeek = (dayOfMonth + dayOfWeek - 28)%7;				
+				dayOfWeek = (dayOfMonth + dayOfWeek - 28) % 7;				
 			}
 	 } 
 	 private static void advance() {		
-			for( int m = 1; m <= 12; m++){
+			for ( int m = 1; m <= 12; m++){
 				dayOfMonth = nDaysInMonth(m, year);
 				;
-				for(int d =1; d <= dayOfMonth; d++ ){
-					if(dayOfWeek == 1){
+				for (int d = 1; d <= dayOfMonth; d++ ){
+					if (dayOfWeek == 1){
 						System.out.printf("%d/%d/%d Sunday \n", d, m, year );					
 					} else {
 						System.out.printf("%d/%d/%d \n" , d, m, year );
 					}					
-					dayOfWeek = (dayOfWeek + 1)%7;
+					dayOfWeek = (dayOfWeek + 1) % 7;
 				}				
 			}
 	 } 
 		 
     // Returns true if the given year is a leap year, false otherwise.
 	private static boolean isLeapYear(int year) {
-	    if( (year % 400 == 0 ) || (( year % 4 == 0 ) && ( year % 100 != 0 )) ){
+	    if ( (year % 400 == 0 ) || (( year % 4 == 0 ) && ( year % 100 != 0 ))){
 			return true;			 
 	   } else {
 		   return false;
@@ -82,14 +66,13 @@ public class Calendar {
 	// All the other months have 31 days.
 	private static int nDaysInMonth(int month, int year) {
 		switch (month) {
-			case 1: return  31;	 		
+			case 1: return 31;	 		
 			case 2:
-			if (isLeapYear(year)==true) {
+			if (isLeapYear(year) == true) {
 					return 29;
 			} else {
 				return 28;
-			}			 
-							
+			}					
 			case 3: return 31;				
 			case 4: return 30;				
 			case 5: return 31;				
